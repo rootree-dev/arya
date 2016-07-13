@@ -94,8 +94,6 @@
       // content
       this.wallet['title'] = document.title;
       this.wallet['url'] = window.location.href;
-
-      console.log(this.wallet);
     },
 
     isSessionExpired: function() {
