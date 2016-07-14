@@ -97,7 +97,7 @@
     },
 
     isSessionExpired: function() {
-      if( localStorage['ar_sst'] !== undefined || this.now() - (new Date(localStorage['ar_sst']).getTime()) < config.session_duration ) {
+      if( localStorage['ar_sst'] !== undefined && this.now() - (new Date(parseInt(localStorage['ar_sst'])).getTime()) < config.session_duration ) {
         return false;
       }
       return true;
