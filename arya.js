@@ -4,7 +4,8 @@
  * namings 
  *
  * needle: unique id per client
- * sst: session start
+ * sst: session start time
+ * slt: session last time
  */
 (function (name, window, fn) {
   'use strict';
@@ -68,7 +69,7 @@
       }
 
       this.wallet['session.start'] = parseInt(localStorage['ar_sst']);
-      this.wallet['session.now'] = this.now();
+      localStorage['ar_slt'] = this.wallet['session.now'] = this.now();
 
       // referrer
       this.wallet['referrer'] = document.referrer;
@@ -97,7 +98,7 @@
     },
 
     isSessionExpired: function() {
-      if( localStorage['ar_sst'] !== undefined && this.now() - (new Date(parseInt(localStorage['ar_sst'])).getTime()) < config.session_duration ) {
+      if( localStorage['ar_slt'] !== undefined && this.now() - (new Date(parseInt(localStorage['ar_slt'])).getTime()) < config.session_duration || this.now() - (new Date(parseInt(localStorage['ar_slt'])).getTime()) < 0 ) {
         return false;
       }
       return true;
