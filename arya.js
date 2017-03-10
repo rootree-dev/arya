@@ -78,8 +78,8 @@
       var lang_info = (this._try(navigator.languages, 0) || navigator.language || navigator.browserLanguage || navigator.systemLanguage || navigator.userLanguage || '').split('-');
       var language, country;
 
-      language = this._try(lang_info, 0);
-      country = this._try(lang_info, 1);
+      language = this._try(lang_info, 0) || '';
+      country = this._try(lang_info, 1) || '';
 
       this.wallet['language'] = language.toLowerCase();
       this.wallet['country'] = country.toLowerCase();
